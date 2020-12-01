@@ -4,8 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <!-- / fonts -->
+  <!-- slider -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- / slider -->
+
   <link rel="stylesheet" href="css/style.css">
   <script type="module" src="main.js"></script>
 
@@ -13,7 +20,54 @@
 </head>
 
 <body>
+  <div class="container">
+    <section class="password-preview">
+      <h1 class="password-preview__title">password generator</h1>
+      <input class="password-preview__input" type="text" value="$*lSa82:lkx8wOI">
+      <div class="password-preview__strength">
+        <div class="password-preview__strength-title">Password strength: Good</div>
+        <div class="password-preview__strength-indicator"></div>
+      </div>
+    </section>
+    <section class="password-generator">
+      <div class="password-generator__title">Setup password generator:</div>
+      <div class="password-generator__settings">
+        <div class="password-generator__settings-row">
+          <div class="password-generator__ password-generator__settings-column">
 
+          </div>
+          <div class="password-generator__settings-column">
+            <button class="password-generator__restore-settings-btn btn-base"></button>
+          </div>
+        </div>
+        <div class="password-generator__row">
+          <div class="password-generator__settings-column">
+            <div class="password-generator__password-length-title">Password length: 32</div>
+            <input class="password-generator__password-length-range" type="range">
+          </div>
+          <div class="password-generator__settings-column">
+            <button class="password-generator__generate-password-btn btn-base"></button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section class="password-advices">
+      <h3 class="password-advices__title">Password security advices</h3>
+      <div class="password-advices__slider swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">DON’T use the same password for different sites. Otherwise, someone who culls your
+            Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
+          <div class="swiper-slide">DON’T use the same password for different sites. Otherwise, someone who culls your
+            Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
+          <div class="swiper-slide">DON’T use the same password for different sites. Otherwise, someone who culls your
+            Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
+          ...
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </section>
+  </div>
 </body>
 
 </html>

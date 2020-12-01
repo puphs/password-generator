@@ -1,0 +1,17 @@
+@import '_fonts.scss';
+
+// --- common ---
+body {
+	@extend %open-sans-r;
+	height: 100vh;
+	margin: 0;
+	color: white;
+	background-color: black;
+}
+
+.container {
+	width: 750px;
+	margin: 0 auto;
+	height: 200px;
+}
+// --- / common ---
