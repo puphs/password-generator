@@ -1,17 +1,200 @@
 @import '_fonts.scss';
+@import '_vars.scss';
 
 // --- common ---
-body {
+* {
+	box-sizing: border-box;
+}
+
+html * {
 	@extend %open-sans-r;
+}
+
+body {
 	height: 100vh;
 	margin: 0;
+	padding: 0;
 	color: white;
 	background-color: black;
 }
 
 .container {
-	width: 750px;
+	max-width: 750px;
 	margin: 0 auto;
 	height: 200px;
 }
+
+.btn-base {
+	min-height: 48px;
+	position: relative;
+	border: none;
+	color: white;
+	font-size: 16px;
+	line-height: 22px;
+	text-transform: uppercase;
+	background-color: $color-main;
+	cursor: pointer;
+
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 0px;
+		background-color: white;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+
+		transition: all 0.1s ease-out;
+	}
+	&:hover {
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 6px;
+			background-color: white;
+			position: absolute;
+			bottom: -3px;
+		}
+	}
+}
+
+.active {
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 0px;
+		background-color: $color-main;
+		position: absolute;
+		bottom: 0px;
+
+		transition: all 0.1s ease-out;
+	}
+	&:hover {
+		&::before {
+			width: 100%;
+			height: 6px;
+			background-color: $color-main;
+			bottom: -3px;
+		}
+	}
+}
+
 // --- / common ---
+
+// --- password-preview ---
+.password-preview {
+	padding: 50px 0;
+	&__title {
+		//@extend %open-sans-r;
+		margin: 0;
+		font-style: 36px;
+		line-height: 49px;
+	}
+	&__input-outer {
+		margin-top: 22px;
+	}
+	&__input-outer--active {
+		position: relative;
+		&::before {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 0px;
+			background-color: $color-main;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+
+			transition: all 0.1s ease-out;
+		}
+		&:hover {
+			&::before {
+				height: 6px;
+				background-color: $color-main;
+				bottom: -3px;
+			}
+		}
+	}
+	&__input {
+		width: 100%;
+		border: 0;
+		padding: 12px;
+		font-size: 18px;
+		line-height: 25px;
+		outline-color: $color-main;
+	}
+	&__strength {
+		margin-top: 22px;
+	}
+	&__strength-title {
+		font-size: 14px;
+		line-height: 19px;
+	}
+	&__strength-indicator {
+		margin-top: 12px;
+		width: 100%;
+		height: 8px;
+		background-color: white;
+		position: relative;
+		&::after {
+			content: '';
+			display: block;
+			background-color: $color-main;
+			position: absolute;
+			width: 50%;
+			height: 8px;
+		}
+	}
+}
+
+// --- / password-preview ---
+
+// --- password-generator ---
+.password-generator {
+	&__generate-password-btn {
+	}
+	&__password-length-range {
+	}
+	&__password-length-title {
+	}
+	&__restore-settings-btn {
+	}
+	&__row {
+	}
+	&__settings {
+	}
+	&__settings-column {
+	}
+	&__settings-row {
+	}
+	&__title {
+	}
+}
+// --- / password-generator ---
+
+// --- password-advices ---
+.password-advices {
+	&__slider {
+	}
+	&__title {
+	}
+}
+
+.swiper-button-next {
+}
+.swiper-button-prev {
+}
+.swiper-container {
+}
+.swiper-slide {
+}
+.swiper-wrapper {
+}
+
+// --- / password-advices---

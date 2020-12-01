@@ -1,17 +1,155 @@
-body {
+html * {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
   height: 100vh;
   margin: 0;
+  padding: 0;
   color: white;
   background-color: black;
 }
 
 .container {
-  width: 750px;
+  max-width: 750px;
   margin: 0 auto;
   height: 200px;
+}
+
+.btn-base {
+  min-height: 48px;
+  position: relative;
+  border: none;
+  color: white;
+  font-size: 16px;
+  line-height: 22px;
+  text-transform: uppercase;
+  background-color: #ef4043;
+  cursor: pointer;
+}
+
+.btn-base::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0px;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+.btn-base:hover::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 6px;
+  background-color: white;
+  position: absolute;
+  bottom: -3px;
+}
+
+.active {
+  position: relative;
+}
+
+.active::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0px;
+  background-color: #ef4043;
+  position: absolute;
+  bottom: 0px;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+.active:hover::before {
+  width: 100%;
+  height: 6px;
+  background-color: #ef4043;
+  bottom: -3px;
+}
+
+.password-preview {
+  padding: 50px 0;
+}
+
+.password-preview__title {
+  margin: 0;
+  font-style: 36px;
+  line-height: 49px;
+}
+
+.password-preview__input-outer {
+  margin-top: 22px;
+}
+
+.password-preview__input-outer--active {
+  position: relative;
+}
+
+.password-preview__input-outer--active::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0px;
+  background-color: #ef4043;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+.password-preview__input-outer--active:hover::before {
+  height: 6px;
+  background-color: #ef4043;
+  bottom: -3px;
+}
+
+.password-preview__input {
+  width: 100%;
+  border: 0;
+  padding: 12px;
+  font-size: 18px;
+  line-height: 25px;
+  outline-color: #ef4043;
+}
+
+.password-preview__strength {
+  margin-top: 22px;
+}
+
+.password-preview__strength-title {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.password-preview__strength-indicator {
+  margin-top: 12px;
+  width: 100%;
+  height: 8px;
+  background-color: white;
+  position: relative;
+}
+
+.password-preview__strength-indicator::after {
+  content: '';
+  display: block;
+  background-color: #ef4043;
+  position: absolute;
+  width: 50%;
+  height: 8px;
 }

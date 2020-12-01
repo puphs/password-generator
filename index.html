@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- / fonts -->
   <!-- slider -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
@@ -14,7 +14,7 @@
   <!-- / slider -->
 
   <link rel="stylesheet" href="css/style.css">
-  <script type="module" src="main.js"></script>
+  <!-- <script type="module" src="main.js"></script> -->
 
   <title>Password generator</title>
 </head>
@@ -23,7 +23,9 @@
   <div class="container">
     <section class="password-preview">
       <h1 class="password-preview__title">password generator</h1>
-      <input class="password-preview__input" type="text" value="$*lSa82:lkx8wOI">
+      <div class="password-preview__input-outer password-preview__input-outer--active">
+        <input class="password-preview__input" type="text" value="$*lSa82:lkx8wOI">
+      </div>
       <div class="password-preview__strength">
         <div class="password-preview__strength-title">Password strength: Good</div>
         <div class="password-preview__strength-indicator"></div>
@@ -37,7 +39,7 @@
 
           </div>
           <div class="password-generator__settings-column">
-            <button class="password-generator__restore-settings-btn btn-base"></button>
+            <button class="password-generator__restore-settings-btn btn-base">restore settings</button>
           </div>
         </div>
         <div class="password-generator__row">
@@ -46,7 +48,7 @@
             <input class="password-generator__password-length-range" type="range">
           </div>
           <div class="password-generator__settings-column">
-            <button class="password-generator__generate-password-btn btn-base"></button>
+            <button class="password-generator__generate-password-btn btn-base">generate password</button>
           </div>
         </div>
       </div>
@@ -62,7 +64,6 @@
             Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
           <div class="swiper-slide">DON’T use the same password for different sites. Otherwise, someone who culls your
             Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
-          ...
         </div>
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
