@@ -22,16 +22,21 @@ body {
   height: 200px;
 }
 
-.btn-base {
-  min-height: 48px;
-  position: relative;
+button {
   border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn-base {
+  position: relative;
+  min-height: 48px;
+  padding: 0 20px;
   color: white;
   font-size: 16px;
   line-height: 22px;
   text-transform: uppercase;
   background-color: #ef4043;
-  cursor: pointer;
 }
 
 .btn-base::before {
@@ -58,41 +63,19 @@ body {
   bottom: -3px;
 }
 
-.active {
-  position: relative;
-}
-
-.active::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 0px;
-  background-color: #ef4043;
-  position: absolute;
-  bottom: 0px;
-  -webkit-transition: all 0.1s ease-out;
-  transition: all 0.1s ease-out;
-}
-
-.active:hover::before {
-  width: 100%;
-  height: 6px;
-  background-color: #ef4043;
-  bottom: -3px;
-}
-
 .password-preview {
-  padding: 50px 0;
+  padding-top: 50px;
 }
 
 .password-preview__title {
   margin: 0;
-  font-style: 36px;
+  font-size: 36px;
   line-height: 49px;
 }
 
 .password-preview__input-outer {
   margin-top: 22px;
+  position: relative;
 }
 
 .password-preview__input-outer--active {
@@ -113,10 +96,37 @@ body {
   transition: all 0.1s ease-out;
 }
 
-.password-preview__input-outer--active:hover::before {
+.password-preview__input-outer--active::before {
   height: 6px;
   background-color: #ef4043;
   bottom: -3px;
+}
+
+.password-preview__btn {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: cover;
+  top: calc(50% - 16px);
+  opacity: 0.6;
+  -webkit-transition: opacity 0.25s ease-out;
+  transition: opacity 0.25s ease-out;
+}
+
+.password-preview__btn:hover {
+  opacity: 1;
+}
+
+.password-preview__visibility-btn {
+  background-image: url("/img/visibility-off.svg");
+  right: 12px;
+}
+
+.password-preview__copy-btn {
+  background-image: url("/img/copy.svg");
+  right: -44px;
 }
 
 .password-preview__input {
@@ -152,4 +162,127 @@ body {
   position: absolute;
   width: 50%;
   height: 8px;
+}
+
+.password-generator {
+  padding-top: 56px;
+}
+
+.password-generator__title {
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 12px;
+}
+
+.settings__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.settings__row + .settings__row {
+  margin-top: 20px;
+}
+
+.settings__column {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+.settings__column + .settings__column {
+  margin-left: 16px;
+}
+
+.settings__checkboxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.settings__checkbox {
+  position: relative;
+  max-width: 70px;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  text-align: center;
+  vertical-align: middle;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+}
+
+.settings__checkbox::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0px;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+.settings__checkbox:hover::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 6px;
+  background-color: white;
+  position: absolute;
+  bottom: -3px;
+}
+
+.settings__checkbox + .settings__checkbox {
+  margin-left: 24px;
+}
+
+.settings__checkbox--active::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 6px;
+  background-color: #ef4043;
+  position: absolute;
+  bottom: -3px;
+}
+
+.settings__btn {
+  width: 100%;
+}
+
+.settings__password-length {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.settings__password-length-title {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.settings__password-length-range {
+  width: 100%;
+  padding: 0;
 }

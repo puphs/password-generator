@@ -23,8 +23,10 @@
   <div class="container">
     <section class="password-preview">
       <h1 class="password-preview__title">password generator</h1>
-      <div class="password-preview__input-outer password-preview__input-outer--active">
+      <div class="password-preview__input-outer">
         <input class="password-preview__input" type="text" value="$*lSa82:lkx8wOI">
+        <button class="password-preview__visibility-btn password-preview__btn"></button>
+        <button class="password-preview__copy-btn password-preview__btn"></button>
       </div>
       <div class="password-preview__strength">
         <div class="password-preview__strength-title">Password strength: Good</div>
@@ -33,22 +35,25 @@
     </section>
     <section class="password-generator">
       <div class="password-generator__title">Setup password generator:</div>
-      <div class="password-generator__settings">
-        <div class="password-generator__settings-row">
-          <div class="password-generator__ password-generator__settings-column">
-
+      <div class="settings">
+        <div class="settings__row">
+          <div class="settings__checkboxes settings__column">
+            <div class="settings__checkbox settings__checkbox--active">AB</div>
+            <div class="settings__checkbox">ab</div>
+            <div class="settings__checkbox">#&?</div>
+            <div class="settings__checkbox">123</div>
           </div>
-          <div class="password-generator__settings-column">
-            <button class="password-generator__restore-settings-btn btn-base">restore settings</button>
+          <div class="settings__column">
+            <button class="settings__restore-settings-btn settings__btn btn-base">restore settings</button>
           </div>
         </div>
-        <div class="password-generator__row">
-          <div class="password-generator__settings-column">
-            <div class="password-generator__password-length-title">Password length: 32</div>
-            <input class="password-generator__password-length-range" type="range">
+        <div class="settings__row">
+          <div class=" settings__password-length settings__column">
+            <div class="settings__password-length-title">Password length: 32</div>
+            <input class="settings__password-length-range" type="range">
           </div>
-          <div class="password-generator__settings-column">
-            <button class="password-generator__generate-password-btn btn-base">generate password</button>
+          <div class="settings__column">
+            <button class="settings__generate-password-btn settings__btn btn-base">generate password</button>
           </div>
         </div>
       </div>

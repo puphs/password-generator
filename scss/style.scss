@@ -24,79 +24,36 @@ body {
 	height: 200px;
 }
 
-.btn-base {
-	min-height: 48px;
-	position: relative;
+button {
 	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+.btn-base {
+	@include hover-line;
+	min-height: 48px;
+	padding: 0 20px;
 	color: white;
 	font-size: 16px;
 	line-height: 22px;
 	text-transform: uppercase;
 	background-color: $color-main;
-	cursor: pointer;
-
-	&::before {
-		content: '';
-		display: block;
-		width: 100%;
-		height: 0px;
-		background-color: white;
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-
-		transition: all 0.1s ease-out;
-	}
-	&:hover {
-		&::before {
-			content: '';
-			display: block;
-			width: 100%;
-			height: 6px;
-			background-color: white;
-			position: absolute;
-			bottom: -3px;
-		}
-	}
 }
-
-.active {
-	position: relative;
-	&::before {
-		content: '';
-		display: block;
-		width: 100%;
-		height: 0px;
-		background-color: $color-main;
-		position: absolute;
-		bottom: 0px;
-
-		transition: all 0.1s ease-out;
-	}
-	&:hover {
-		&::before {
-			width: 100%;
-			height: 6px;
-			background-color: $color-main;
-			bottom: -3px;
-		}
-	}
-}
-
 // --- / common ---
 
 // --- password-preview ---
 .password-preview {
-	padding: 50px 0;
+	padding-top: 50px;
 	&__title {
 		//@extend %open-sans-r;
 		margin: 0;
-		font-style: 36px;
+		font-size: 36px;
 		line-height: 49px;
 	}
 	&__input-outer {
 		margin-top: 22px;
+		position: relative;
 	}
 	&__input-outer--active {
 		position: relative;
@@ -113,13 +70,33 @@ body {
 
 			transition: all 0.1s ease-out;
 		}
-		&:hover {
-			&::before {
-				height: 6px;
-				background-color: $color-main;
-				bottom: -3px;
-			}
+		&::before {
+			height: 6px;
+			background-color: $color-main;
+			bottom: -3px;
 		}
+	}
+	&__btn {
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		background-size: cover;
+		top: calc(50% - 16px);
+		opacity: 0.6;
+		transition: opacity 0.25s ease-out;
+		&:hover {
+			opacity: 1;
+		}
+	}
+	&__visibility-btn {
+		background-image: url('/img/visibility-off.svg');
+		right: 12px;
+	}
+	&__copy-btn {
+		background-image: url('/img/copy.svg');
+		right: -44px;
 	}
 	&__input {
 		width: 100%;
@@ -157,23 +134,74 @@ body {
 
 // --- password-generator ---
 .password-generator {
-	&__generate-password-btn {
+	padding-top: 56px;
+	&__title {
+		font-size: 16px;
+		line-height: 22px;
+		margin-bottom: 12px;
 	}
-	&__password-length-range {
+}
+.settings {
+	&__row {
+		display: flex;
+		& + & {
+			margin-top: 20px;
+		}
+	}
+	&__column {
+		flex-basis: 100%;
+		& + & {
+			margin-left: 16px;
+		}
+	}
+	&__checkboxes {
+		display: flex;
+		flex-direction: row;
+	}
+	&__checkbox {
+		@include hover-line;
+		max-width: 70px;
+		flex-basis: 100%;
+		text-align: center;
+		vertical-align: middle;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		& + & {
+			margin-left: 24px;
+		}
+		&--active {
+			&::before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 6px;
+				background-color: $color-main;
+				position: absolute;
+				bottom: -3px;
+			}
+		}
+	}
+	&__btn {
+		width: 100%;
+	}
+	&__password-length {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 	&__password-length-title {
+		font-size: 14px;
+		line-height: 19px;
+	}
+	&__password-length-range {
+		width: 100%;
+		padding: 0;
 	}
 	&__restore-settings-btn {
 	}
-	&__row {
-	}
-	&__settings {
-	}
-	&__settings-column {
-	}
-	&__settings-row {
-	}
-	&__title {
+	&__generate-password-btn {
 	}
 }
 // --- / password-generator ---
