@@ -1,7 +1,10 @@
 import Swiper from './libs/swiper-bundle.esm.browser.min.js';
+import PasswordGenerator from './PasswordGenerator.js';
 
 window.onload = () => {
 	setupPaswordAdvicesSlider();
+	let passwordGenerator = new PasswordGenerator();
+	passwordGenerator.generate();
 };
 
 function setupPaswordAdvicesSlider() {
