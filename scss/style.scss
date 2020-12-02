@@ -33,11 +33,13 @@ button {
 .input-range {
 	width: 100%;
 	position: relative;
+
 	&__background {
 		width: 100%;
 		height: 8px;
 		background-color: white;
 	}
+
 	&__fill {
 		position: absolute;
 		height: 100%;
@@ -46,6 +48,7 @@ button {
 		left: 0;
 		background-color: red;
 	}
+
 	&__thumb {
 		border-radius: 100%;
 		position: absolute;
@@ -57,12 +60,14 @@ button {
 		cursor: pointer;
 	}
 }
+
 input[type='range'] {
 	appearance: none;
 	width: 100%;
 	margin: 0;
 	height: 24px;
 	background: transparent;
+
 	&:focus {
 		outline: none;
 	}
@@ -74,43 +79,46 @@ input[type='range'] {
 		border: none;
 		width: 24px;
 		height: 24px;
-		background-color: $color-main;
+		background-color: white;
 		margin-top: -8px;
 		cursor: pointer;
 	}
+
 	&::-moz-range-thumb {
 		border-radius: 100%;
 		border: none;
 		width: 24px;
 		height: 24px;
-		background-color: $color-main;
+		background-color: white;
 		cursor: pointer;
 	}
+
 	&::-ms-thumb {
 		border-radius: 100%;
 		border: none;
 		width: 24px;
 		height: 24px;
-		background-color: $color-main;
+		background-color: white;
 		cursor: pointer;
 	}
 	// - / thumb -
 
 	// - track -
 	&::-webkit-slider-runnable-track {
-		width: 100%;
+		width: 99%;
 		height: 8px;
 		cursor: pointer;
 		border-radius: 100px;
-		background: white;
+		background: $color-main;
 	}
 
 	&::-moz-range-track {
 		width: 99%;
 		height: 8px;
 		cursor: pointer;
-		background: white;
+		background: $color-main;
 	}
+
 	&::-ms-track {
 		width: 99%;
 		background-attachment: transparent;
@@ -118,13 +126,7 @@ input[type='range'] {
 		cursor: pointer;
 		color: transparent;
 	}
-	&::-ms-fill-lower {
-		background-color: $color-main;
-	}
-	&::-moz-range-progress {
-		background-color: $color-main;
-		height: 8px;
-	}
+
 	// - / track -
 }
 
@@ -138,23 +140,28 @@ input[type='range'] {
 	text-transform: uppercase;
 	background-color: $color-main;
 }
+
 // --- / common ---
 
 // --- password-preview ---
 .password-preview {
 	padding-top: 50px;
+
 	&__title {
 		//@extend %open-sans-r;
 		margin: 0;
 		font-size: 36px;
 		line-height: 49px;
 	}
+
 	&__input-outer {
 		margin-top: 22px;
 		position: relative;
 	}
+
 	&__input-outer--active {
 		position: relative;
+
 		&::before {
 			content: '';
 			display: block;
@@ -168,12 +175,14 @@ input[type='range'] {
 
 			transition: all 0.1s ease-out;
 		}
+
 		&::before {
 			height: 6px;
 			background-color: $color-main;
 			bottom: -3px;
 		}
 	}
+
 	&__btn {
 		position: absolute;
 		width: 32px;
@@ -184,18 +193,22 @@ input[type='range'] {
 		top: calc(50% - 16px);
 		opacity: 0.6;
 		transition: opacity 0.25s ease-out;
+
 		&:hover {
 			opacity: 1;
 		}
 	}
+
 	&__visibility-btn {
 		background-image: url('/img/visibility-off.svg');
 		right: 12px;
 	}
+
 	&__copy-btn {
 		background-image: url('/img/copy.svg');
 		right: -44px;
 	}
+
 	&__input {
 		width: 100%;
 		border: 0;
@@ -204,19 +217,23 @@ input[type='range'] {
 		line-height: 25px;
 		outline-color: $color-main;
 	}
+
 	&__strength {
 		margin-top: 22px;
 	}
+
 	&__strength-title {
 		font-size: 14px;
 		line-height: 19px;
 	}
+
 	&__strength-indicator {
 		margin-top: 12px;
 		width: 100%;
 		height: 8px;
 		background-color: white;
 		position: relative;
+
 		&::after {
 			content: '';
 			display: block;
@@ -233,30 +250,37 @@ input[type='range'] {
 // --- password-generator ---
 .password-generator {
 	padding-top: 56px;
+
 	&__title {
 		font-size: 16px;
 		line-height: 22px;
 		margin-bottom: 12px;
 	}
 }
+
 .settings {
 	&__row {
 		display: flex;
+
 		& + & {
 			margin-top: 20px;
 		}
 	}
+
 	&__column {
 		min-height: 50px;
 		flex-basis: 100%;
+
 		& + & {
 			margin-left: 16px;
 		}
 	}
+
 	&__checkboxes {
 		display: flex;
 		flex-direction: row;
 	}
+
 	&__checkbox {
 		@include hover-line;
 		max-width: 70px;
@@ -267,9 +291,11 @@ input[type='range'] {
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
+
 		& + & {
 			margin-left: 24px;
 		}
+
 		&--active {
 			&::before {
 				content: '';
@@ -282,11 +308,13 @@ input[type='range'] {
 			}
 		}
 	}
+
 	&__btn {
 		width: 100%;
 		height: 100%;
 	}
 }
+
 .password-length {
 	display: flex;
 	flex-direction: column;
@@ -296,37 +324,73 @@ input[type='range'] {
 		font-size: 14px;
 		line-height: 19px;
 	}
-	// &__restore-settings-btn {
-	// }
-	// &__generate-password-btn {
-	// }
-	&__range {
-		//margin-top: 50px;
-	}
 }
+
 .password-length-input-range {
 	width: 100%;
 	height: 8px;
 }
+
 // --- / password-generator ---
 
 // --- password-advices ---
 .password-advices {
-	&__slider {
-	}
+	padding-top: 56px;
+
 	&__title {
+		margin: 0;
+		@extend %open-sans-s;
+		font-size: 16px;
+		line-height: 22px;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	&__slider {
+		margin-top: 14px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__slider-text {
+		font-size: 14px;
+		line-height: 19px;
+		text-align: center;
+	}
+
+	&__btn {
+		width: 48px;
+		height: 48px;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		background-size: cover;
+		top: calc(50% - 16px);
+		cursor: pointer;
+	}
+	&__next-btn {
+		background-image: url('/img/navigate-next.svg');
+	}
+	&__prev-btn {
+		background-image: url('/img/navigate-next.svg');
+		transform: rotate(-180deg);
 	}
 }
 
 .swiper-button-next {
 }
+
 .swiper-button-prev {
 }
+
 .swiper-container {
 }
+
 .swiper-slide {
 }
+
 .swiper-wrapper {
+	max-width: 650px;
 }
 
 // --- / password-advices---

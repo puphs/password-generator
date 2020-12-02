@@ -3,6 +3,11 @@ html * {
   font-weight: 400;
 }
 
+.password-advices__title {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -80,7 +85,7 @@ input[type='range']::-webkit-slider-thumb {
   border: none;
   width: 24px;
   height: 24px;
-  background-color: #ef4043;
+  background-color: white;
   margin-top: -8px;
   cursor: pointer;
 }
@@ -90,7 +95,7 @@ input[type='range']::-moz-range-thumb {
   border: none;
   width: 24px;
   height: 24px;
-  background-color: #ef4043;
+  background-color: white;
   cursor: pointer;
 }
 
@@ -99,23 +104,23 @@ input[type='range']::-ms-thumb {
   border: none;
   width: 24px;
   height: 24px;
-  background-color: #ef4043;
+  background-color: white;
   cursor: pointer;
 }
 
 input[type='range']::-webkit-slider-runnable-track {
-  width: 100%;
+  width: 99%;
   height: 8px;
   cursor: pointer;
   border-radius: 100px;
-  background: white;
+  background: #ef4043;
 }
 
 input[type='range']::-moz-range-track {
   width: 99%;
   height: 8px;
   cursor: pointer;
-  background: white;
+  background: #ef4043;
 }
 
 input[type='range']::-ms-track {
@@ -124,15 +129,6 @@ input[type='range']::-ms-track {
   border-color: transparent;
   cursor: pointer;
   color: transparent;
-}
-
-input[type='range']::-ms-fill-lower {
-  background-color: #ef4043;
-}
-
-input[type='range']::-moz-range-progress {
-  background-color: #ef4043;
-  height: 8px;
 }
 
 .btn-base {
@@ -394,4 +390,59 @@ input[type='range']::-moz-range-progress {
 .password-length-input-range {
   width: 100%;
   height: 8px;
+}
+
+.password-advices {
+  padding-top: 56px;
+}
+
+.password-advices__title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.password-advices__slider {
+  margin-top: 14px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.password-advices__slider-text {
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+}
+
+.password-advices__btn {
+  width: 48px;
+  height: 48px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-size: cover;
+  top: calc(50% - 16px);
+  cursor: pointer;
+}
+
+.password-advices__next-btn {
+  background-image: url("/img/navigate-next.svg");
+}
+
+.password-advices__prev-btn {
+  background-image: url("/img/navigate-next.svg");
+  -webkit-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+}
+
+.swiper-wrapper {
+  max-width: 650px;
 }

@@ -9,8 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
   <!-- / fonts -->
   <!-- slider -->
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="css/libs/swiper-bundle.min.css">
   <!-- / slider -->
 
   <link rel="stylesheet" href="css/style.css">
@@ -61,19 +60,30 @@
     </section>
     <section class="password-advices">
       <h3 class="password-advices__title">Password security advices</h3>
-      <div class="password-advices__slider swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">DON’T use the same password for different sites. Otherwise, someone who culls your
-            Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
-          <div class="swiper-slide">DON’T use the same password for different sites. Otherwise, someone who culls your
-            Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
-          <div class="swiper-slide">DON’T use the same password for different sites. Otherwise, someone who culls your
-            Facebook or Twitter password in a phishing exploit could, for example, access your bank account. </div>
+      <div class="password-advices__slider">
+        <button class="password-advices__btn password-advices__prev-btn"></button>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="password-advices__slider-text swiper-slide">
+              DON’T use the same password for different sites.
+              Otherwise, someone who culls your
+              Facebook or Twitter password in a phishing exploit could, for example, access your bank account.
+            </div>
+            <div class="password-advices__slider-text swiper-slide">
+              DON’T use the same password for different sites.
+              Otherwise, someone who culls your
+              Facebook or Twitter password in a phishing exploit could, for example, access your bank account.
+            </div>
+            <div class="password-advices__slider-text swiper-slide">
+              DON’T use the same password for different sites.
+              Otherwise, someone who culls your
+              Facebook or Twitter password in a phishing exploit could, for example, access your bank account.
+            </div>
+          </div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <button class="password-advices__btn password-advices__next-btn"></button>
+      </div>
     </section>
-  </div>
 </body>
 
 </html>
