@@ -223,8 +223,12 @@ input[type='range']::-ms-track {
 }
 
 .password-preview__visibility-btn {
-  background-image: url("/img/visibility-off.svg");
+  background-image: url("/img/visibility-off.svg"), url("/img/visibility.svg");
   right: 12px;
+}
+
+.password-preview__visibility-btn--visible {
+  background-image: url("/img/visibility.svg");
 }
 
 .password-preview__copy-btn {
@@ -380,6 +384,9 @@ input[type='range']::-ms-track {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .password-length__title {
@@ -443,6 +450,7 @@ input[type='range']::-ms-track {
           transform: rotate(-180deg);
 }
 
-.swiper-wrapper {
-  max-width: 650px;
+.swiper-container {
+  -ms-flex-preferred-size: 80%;
+      flex-basis: 80%;
 }
