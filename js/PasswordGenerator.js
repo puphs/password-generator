@@ -1,19 +1,19 @@
 export default class {
 	/*
-    settings object can contain:
+    options object can contain:
         1.lowercase, uppercase, symbols, numbers - boolean properties;
         2.length - integer property;
     */
-	constructor(settings) {
-		if (settings) {
-			this.settings = settings;
+	constructor(options) {
+		if (options) {
+			this.options = options;
 		} else {
-			this.restoreDefaultSettings();
+			this.restoreDefaultOptions();
 		}
 	}
 
-	restoreDefaultSettings() {
-		this.settings = {
+	restoreDefaultOptions() {
+		this.options = {
 			lowercase: true,
 			uppercase: true,
 			symbols: true,
@@ -24,27 +24,27 @@ export default class {
 
 	// If use is true, password may contain lowercase letters
 	useLowercase(use) {
-		this.settings.lowercase = use ? true : false;
+		this.options.lowercase = use ? true : false;
 	}
 	// If use is true, password may contain uppercase letters
 	useUppercase(use) {
-		this.settings.uppercase = use ? true : false;
+		this.options.uppercase = use ? true : false;
 	}
 	// If use is true, password may contain symbols (e.g. ?, !, *, (, @...)
 	useSymbols(use) {
-		this.settings.symbols = use ? true : false;
+		this.options.symbols = use ? true : false;
 	}
 	// If use is true, password may contain numbers
-	useSymbols(use) {
-		this.settings.numbers = use ? true : false;
+	useNumbers(use) {
+		this.options.numbers = use ? true : false;
 	}
 
-	// returns password string generated based on settings propery
+	// returns password string generated based on options propery
 	generate() {
 		let password = '';
 		let characters = this.getAllPossibleCharacters();
 
-		let randomValues = new Uint8Array(this.settings.length || 16);
+		let randomValues = new Uint8Array(this.options.length || 16);
 		crypto.getRandomValues(randomValues);
 
 		for (let i = 0; i < randomValues.length; i++) {
@@ -55,20 +55,20 @@ export default class {
 
 	/* 
 	returns an array of all characters the password can contain
-	based on settings property
+	based on options property
 	*/
 	getAllPossibleCharacters() {
 		let characters = [];
 		// lowercase letter codes are in 97-122
-		if (this.settings.lowercase)
+		if (this.options.lowercase)
 			for (let i = 97; i <= 122; i++) characters.push(String.fromCharCode(i));
 
 		// Uppercase letter codes are in 65-90
-		if (this.settings.uppercase)
+		if (this.options.uppercase)
 			for (let i = 65; i <= 90; i++) characters.push(String.fromCharCode(i));
 
 		// Number letter codes are in 48-57
-		if (this.settings.lowercase)
+		if (this.options.lowercase)
 			for (let i = 48; i <= 57; i++) characters.push(String.fromCharCode(i));
 
 		// Symbols
