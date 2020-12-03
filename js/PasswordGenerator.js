@@ -41,6 +41,7 @@ export default class {
 
 	// returns password string generated based on options propery
 	generate() {
+		console.log(this.options);
 		let password = '';
 		let characters = this.getAllPossibleCharacters();
 
@@ -68,10 +69,14 @@ export default class {
 			for (let i = 65; i <= 90; i++) characters.push(String.fromCharCode(i));
 
 		// Number letter codes are in 48-57
-		if (this.options.lowercase)
+		if (this.options.numbers)
 			for (let i = 48; i <= 57; i++) characters.push(String.fromCharCode(i));
 
 		// Symbols
-		return characters.concat(...'!"#$%&\'()*+,-.:;<=>?@^_~|{}[]`');
+		if (this.options.symbols) {
+			return characters.concat(...'!"#$%&\'()*+,-.:;<=>?@^_~|{}[]`');
+		} else {
+			return characters;
+		}
 	}
 }
