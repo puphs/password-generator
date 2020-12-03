@@ -1,7 +1,26 @@
 $color-main: #ef4043;
 
-@mixin hover-line() {
+%hover-underline {
 	position: relative;
+	@extend %underline-hidden;
+	&:hover {
+		@extend %underline-shown;
+	}
+}
+
+%underline-shown {
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 6px;
+		background-color: white;
+		position: absolute;
+		bottom: -3px;
+	}
+}
+
+%underline-hidden {
 	&::before {
 		content: '';
 		display: block;
@@ -14,16 +33,5 @@ $color-main: #ef4043;
 		right: 0;
 
 		transition: all 0.12s ease-out;
-	}
-	&:hover {
-		&::before {
-			content: '';
-			display: block;
-			width: 100%;
-			height: 6px;
-			background-color: white;
-			position: absolute;
-			bottom: -3px;
-		}
 	}
 }

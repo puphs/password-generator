@@ -82,6 +82,11 @@ input[type='range'] {
 		background-color: white;
 		margin-top: -8px;
 		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: $color-main;
+		}
 	}
 
 	&::-moz-range-thumb {
@@ -91,6 +96,11 @@ input[type='range'] {
 		height: 24px;
 		background-color: white;
 		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: $color-main;
+		}
 	}
 
 	&::-ms-thumb {
@@ -100,6 +110,11 @@ input[type='range'] {
 		height: 24px;
 		background-color: white;
 		cursor: pointer;
+		transition: background-color 0.3s;
+
+		&:hover {
+			background-color: $color-main;
+		}
 	}
 	// - / thumb -
 
@@ -131,7 +146,7 @@ input[type='range'] {
 }
 
 .btn-base {
-	@include hover-line;
+	@extend %hover-underline;
 	min-height: 48px;
 	padding: 0 20px;
 	color: white;
@@ -144,7 +159,7 @@ input[type='range'] {
 
 // --- password-preview ---
 .password-preview {
-	padding-top: 50px;
+	padding-top: 56px;
 
 	&__title {
 		//@extend %open-sans-r;
@@ -156,24 +171,28 @@ input[type='range'] {
 	&__input-outer {
 		margin-top: 22px;
 		position: relative;
+		@extend %underline-hidden;
+		// &::before {
+		// 	transition: all 0.1s ease-out;
+		// }
 	}
 
 	&__input-outer--active {
 		position: relative;
+		@extend %underline-shown;
+		// &::before {
+		// 	content: '';
+		// 	display: block;
+		// 	width: 100%;
+		// 	height: 0px;
+		// 	background-color: $color-main;
+		// 	position: absolute;
+		// 	bottom: 0;
+		// 	left: 0;
+		// 	right: 0;
 
-		&::before {
-			content: '';
-			display: block;
-			width: 100%;
-			height: 0px;
-			background-color: $color-main;
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-
-			transition: all 0.1s ease-out;
-		}
+		// 	transition: all 0.1s ease-out;
+		// }
 
 		&::before {
 			height: 6px;
@@ -250,7 +269,7 @@ input[type='range'] {
 
 // --- password-generator ---
 .password-generator {
-	padding-top: 56px;
+	padding-top: 70px;
 
 	&__title {
 		font-size: 16px;
@@ -277,27 +296,28 @@ input[type='range'] {
 		}
 	}
 
-	&__checkboxes {
+	&__options {
 		display: flex;
+		justify-content: space-between;
 		flex-direction: row;
 	}
 
-	&__checkbox {
-		@include hover-line;
+	&__option {
+		//@extend %hover-underline;
+		position: relative;
 		max-width: 70px;
 		flex-basis: 100%;
 		text-align: center;
-		vertical-align: middle;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
 
 		& + & {
-			margin-left: 24px;
+			//margin-left: 24px;
 		}
 
-		&--active {
+		&--selected {
 			&::before {
 				content: '';
 				display: block;
@@ -306,7 +326,11 @@ input[type='range'] {
 				background-color: $color-main;
 				position: absolute;
 				bottom: -3px;
+				transition: 0.12s;
 			}
+		}
+		&--hoverable {
+			@extend %hover-underline;
 		}
 	}
 
@@ -336,7 +360,7 @@ input[type='range'] {
 
 // --- password-advices ---
 .password-advices {
-	padding-top: 56px;
+	padding-top: 70px;
 
 	&__title {
 		margin: 0;

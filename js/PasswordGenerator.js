@@ -1,3 +1,4 @@
+import Characters from './Characters.js';
 export default class {
 	/*
     options object can contain:
@@ -8,18 +9,18 @@ export default class {
 		if (options) {
 			this.options = options;
 		} else {
-			this.restoreDefaultOptions();
+			this.options = {};
 		}
 	}
 
-	restoreDefaultOptions() {
-		this.options = {
-			lowercase: true,
-			uppercase: true,
-			symbols: true,
-			numbers: true,
-			length: 16,
-		};
+	setLength(length) {
+		if (typeof length == 'string') {
+			length = parseInt(length) || 16;
+		} else if (typeof length != 'number') {
+			length = 16;
+		}
+		length = Math.min(48, Math.max(8, length));
+		this.options.length = length;
 	}
 
 	// If use is true, password may contain lowercase letters
@@ -41,7 +42,6 @@ export default class {
 
 	// returns password string generated based on options propery
 	generate() {
-		console.log(this.options);
 		let password = '';
 		let characters = this.getAllPossibleCharacters();
 
@@ -60,23 +60,15 @@ export default class {
 	*/
 	getAllPossibleCharacters() {
 		let characters = [];
-		// lowercase letter codes are in 97-122
-		if (this.options.lowercase)
-			for (let i = 97; i <= 122; i++) characters.push(String.fromCharCode(i));
+		if (this.options.uppercase) characters = characters.concat(Characters.uppercase);
 
-		// Uppercase letter codes are in 65-90
-		if (this.options.uppercase)
-			for (let i = 65; i <= 90; i++) characters.push(String.fromCharCode(i));
+		if (this.options.numbers) characters = characters.concat(Characters.numbers);
 
-		// Number letter codes are in 48-57
-		if (this.options.numbers)
-			for (let i = 48; i <= 57; i++) characters.push(String.fromCharCode(i));
+		if (this.options.symbols) characters = characters.concat(Characters.symbols);
 
-		// Symbols
-		if (this.options.symbols) {
-			return characters.concat(...'!"#$%&\'()*+,-.:;<=>?@^_~|{}[]`');
-		} else {
-			return characters;
-		}
+		if (characters.length == 0 || this.options.lowercase)
+			characters = characters.concat(Characters.lowercase);
+
+		return characters;
 	}
 }

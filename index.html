@@ -36,11 +36,11 @@
       <div class="password-generator__title">Setup password generator:</div>
       <div class="settings">
         <div class="settings__row">
-          <div class="settings__checkboxes settings__column">
-            <div class="settings__checkbox settings__checkbox--active">AB</div>
-            <div class="settings__checkbox">ab</div>
-            <div class="settings__checkbox">#&?</div>
-            <div class="settings__checkbox">123</div>
+          <div class="settings__options settings__column">
+            <div class="settings__option settings__option--selected" selected='' data-option="lowercase">ab</div>
+            <div class="settings__option settings__option--hoverable" data-option="uppercase">AB</div>
+            <div class="settings__option settings__option--hoverable" data-option="symbols">#&?</div>
+            <div class="settings__option settings__option--hoverable" data-option="numbers">123</div>
           </div>
           <div class="settings__column">
             <button class="settings__restore-settings-btn settings__btn btn-base">restore settings</button>
@@ -65,7 +65,7 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="password-advices__slider-text swiper-slide">
-              DON’T use the same password for different sites.
+              Don’t use the same password for different sites.
               Otherwise, someone who culls your
               Facebook or Twitter password in a phishing exploit could, for example, access your bank account.
             </div>

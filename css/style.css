@@ -8,6 +8,34 @@ html * {
   font-weight: 600;
 }
 
+.btn-base, .settings__option--hoverable {
+  position: relative;
+}
+
+.btn-base:hover::before, .settings__option--hoverable:hover::before, .password-preview__input-outer--active::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 6px;
+  background-color: white;
+  position: absolute;
+  bottom: -3px;
+}
+
+.btn-base::before, .settings__option--hoverable::before, .password-preview__input-outer::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 0px;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: all 0.12s ease-out;
+  transition: all 0.12s ease-out;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -88,6 +116,12 @@ input[type='range']::-webkit-slider-thumb {
   background-color: white;
   margin-top: -8px;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  background-color: #ef4043;
 }
 
 input[type='range']::-moz-range-thumb {
@@ -97,6 +131,12 @@ input[type='range']::-moz-range-thumb {
   height: 24px;
   background-color: white;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+input[type='range']::-moz-range-thumb:hover {
+  background-color: #ef4043;
 }
 
 input[type='range']::-ms-thumb {
@@ -106,6 +146,12 @@ input[type='range']::-ms-thumb {
   height: 24px;
   background-color: white;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+
+input[type='range']::-ms-thumb:hover {
+  background-color: #ef4043;
 }
 
 input[type='range']::-webkit-slider-runnable-track {
@@ -132,7 +178,6 @@ input[type='range']::-ms-track {
 }
 
 .btn-base {
-  position: relative;
   min-height: 48px;
   padding: 0 20px;
   color: white;
@@ -142,32 +187,8 @@ input[type='range']::-ms-track {
   background-color: #ef4043;
 }
 
-.btn-base::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 0px;
-  background-color: white;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-transition: all 0.12s ease-out;
-  transition: all 0.12s ease-out;
-}
-
-.btn-base:hover::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 6px;
-  background-color: white;
-  position: absolute;
-  bottom: -3px;
-}
-
 .password-preview {
-  padding-top: 50px;
+  padding-top: 56px;
 }
 
 .password-preview__title {
@@ -183,20 +204,6 @@ input[type='range']::-ms-track {
 
 .password-preview__input-outer--active {
   position: relative;
-}
-
-.password-preview__input-outer--active::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 0px;
-  background-color: #ef4043;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-transition: all 0.1s ease-out;
-  transition: all 0.1s ease-out;
 }
 
 .password-preview__input-outer--active::before {
@@ -272,7 +279,7 @@ input[type='range']::-ms-track {
 }
 
 .password-generator {
-  padding-top: 56px;
+  padding-top: 70px;
 }
 
 .password-generator__title {
@@ -301,23 +308,25 @@ input[type='range']::-ms-track {
   margin-left: 16px;
 }
 
-.settings__checkboxes {
+.settings__options {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
 }
 
-.settings__checkbox {
+.settings__option {
   position: relative;
   max-width: 70px;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
   text-align: center;
-  vertical-align: middle;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -330,35 +339,7 @@ input[type='range']::-ms-track {
   cursor: pointer;
 }
 
-.settings__checkbox::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 0px;
-  background-color: white;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-transition: all 0.12s ease-out;
-  transition: all 0.12s ease-out;
-}
-
-.settings__checkbox:hover::before {
-  content: '';
-  display: block;
-  width: 100%;
-  height: 6px;
-  background-color: white;
-  position: absolute;
-  bottom: -3px;
-}
-
-.settings__checkbox + .settings__checkbox {
-  margin-left: 24px;
-}
-
-.settings__checkbox--active::before {
+.settings__option--selected::before {
   content: '';
   display: block;
   width: 100%;
@@ -366,6 +347,8 @@ input[type='range']::-ms-track {
   background-color: #ef4043;
   position: absolute;
   bottom: -3px;
+  -webkit-transition: 0.12s;
+  transition: 0.12s;
 }
 
 .settings__btn {
@@ -400,7 +383,7 @@ input[type='range']::-ms-track {
 }
 
 .password-advices {
-  padding-top: 56px;
+  padding-top: 70px;
 }
 
 .password-advices__title {

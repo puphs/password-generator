@@ -1,12 +1,23 @@
 import Swiper from './libs/swiper-bundle.esm.browser.min.js';
 import PasswordGenerator from './PasswordGenerator.js';
+import PasswordLengthRange from './PasswordLengthRange.js';
+import PasswordStrength from './PasswordStrength.js';
 
-const MIN_PASSWORD_LENGTH = 8;
-const MAX_PASSWORD_LENGTH = 48;
-
-window.onload = () => {
+document.addEventListener('DOMContentLoaded', () => {
 	setupPaswordAdvicesSlider();
+
 	let passwordGenerator = new PasswordGenerator();
+
+	// Password length input range
+	const passwordLengthRange = new PasswordLengthRange(
+		'.password-length__title',
+		'.password-length__range',
+		(passwordLength) => {
+			passwordGenerator.setLength(passwordLength);
+		}
+	);
+
+	const passwordStrength = new PasswordStrength();
 
 	const passwordInput = document.querySelector('.password-preview__input'),
 		passwordStrengthTitle = document.querySelector('.password-preview__strength-title'),
@@ -18,11 +29,21 @@ window.onload = () => {
 		passwordCopyBtn = document.querySelector('.password-preview__copy-btn'),
 		passwordVisibilityBtn = document.querySelector('.password-preview__visibility-btn');
 
-	const passwordLengthRange = document.querySelector('.password-length__range');
+	// Setting up buttons
+	const optionBtns = document.querySelectorAll('.settings__option');
+
+	passwordInput.addEventListener('focus', () => {
+		passwordInput.parentNode.classList.add('password-preview__input-outer--active');
+	});
+	passwordInput.addEventListener('blur', () => {
+		passwordInput.parentNode.classList.remove('password-preview__input-outer--active');
+	});
 
 	generatePasswordBtn.addEventListener('click', () => {
 		passwordInput.value = passwordGenerator.generate();
+		passwordStrength.updateTitleAndIndicator(passwordInput.value);
 	});
+	restoreSettingsBtn.addEventListener('click', restoreSettings);
 
 	// Password copy functionnality
 	passwordCopyBtn.addEventListener('click', () => {
@@ -48,28 +69,75 @@ window.onload = () => {
 		}
 	});
 
-	passwordLengthRange.addEventListener('input', (e) => {
-		let passwordLength = Math.floor(
-			((passwordLengthRange.value - passwordLengthRange.min) /
-				(passwordLengthRange.max - passwordLengthRange.min)) *
-				(MAX_PASSWORD_LENGTH - MIN_PASSWORD_LENGTH) +
-				MIN_PASSWORD_LENGTH
-		);
-		console.log(passwordLength);
-	});
-	// public static float Remap (this float value, float from1, float to1, float from2, float to2) {
-	// 	return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
-	// }
-};
+	optionBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			if (isOptionSelected(btn.dataset.option)) {
+				unselectOption(btn);
+			} else {
+				selectOption(btn);
+			}
 
-function setupPaswordAdvicesSlider() {
-	let swiper = new Swiper('.swiper-container', {
-		loop: true,
-		navigation: {
-			prevEl: '.password-advices__prev-btn',
-			nextEl: '.password-advices__next-btn',
-		},
+			let selectedBtnsCount = 0;
+			optionBtns.forEach((optionBtn) => {
+				if (isOptionSelected(optionBtn.dataset.option)) {
+					selectedBtnsCount++;
+				}
+			});
+			if (selectedBtnsCount == 0) selectOption(btn);
+		});
 	});
-}
 
-function generatePassword() {}
+	restoreSettings();
+
+	function isOptionSelected(optionStr) {
+		return passwordGenerator.options[optionStr];
+	}
+
+	function selectOption(option) {
+		option.classList.add('settings__option--selected');
+		option.classList.remove('settings__option--hoverable');
+		option.setAttribute('selected', '');
+		setPasswordGeneratorOption(option.dataset.option, true);
+	}
+
+	function unselectOption(option) {
+		option.classList.remove('settings__option--selected');
+		option.classList.add('settings__option--hoverable');
+		option.removeAttribute('selected', '');
+		setPasswordGeneratorOption(option.dataset.option, false);
+	}
+
+	function setPasswordGeneratorOption(optionStr, value) {
+		switch (optionStr) {
+			case 'lowercase':
+				passwordGenerator.useLowercase(value);
+				break;
+			case 'uppercase':
+				passwordGenerator.useUppercase(value);
+				break;
+			case 'symbols':
+				passwordGenerator.useSymbols(value);
+				break;
+			case 'numbers':
+				passwordGenerator.useNumbers(value);
+				break;
+		}
+	}
+
+	function setupPaswordAdvicesSlider() {
+		const swiper = new Swiper('.swiper-container', {
+			loop: true,
+			navigation: {
+				prevEl: '.password-advices__prev-btn',
+				nextEl: '.password-advices__next-btn',
+			},
+		});
+	}
+
+	function restoreSettings() {
+		optionBtns.forEach((btn) => {
+			selectOption(btn);
+		});
+		passwordLengthRange.setPasswordLength(16);
+	}
+});
