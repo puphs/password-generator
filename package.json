@@ -1,0 +1,23 @@
+{
+  "name": "password-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puphs/password-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/puphs/password-generator/issues"
+  },
+  "homepage": "https://github.com/puphs/password-generator#readme"
+}
