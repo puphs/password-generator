@@ -129,9 +129,7 @@ input[type='range'] {
 // --- password-preview ---
 .password-preview {
 	padding-top: 56px;
-
 	&__title {
-		//@extend %open-sans-r;
 		margin: 0;
 		font-size: 36px;
 		line-height: 49px;
@@ -141,27 +139,11 @@ input[type='range'] {
 		margin-top: 22px;
 		position: relative;
 		@extend %underline-hidden;
-		// &::before {
-		// 	transition: all 0.1s ease-out;
-		// }
 	}
 
 	&__input-outer--active {
 		position: relative;
 		@extend %underline-shown;
-		// &::before {
-		// 	content: '';
-		// 	display: block;
-		// 	width: 100%;
-		// 	height: 0px;
-		// 	background-color: $color-main;
-		// 	position: absolute;
-		// 	bottom: 0;
-		// 	left: 0;
-		// 	right: 0;
-
-		// 	transition: all 0.1s ease-out;
-		// }
 
 		&::before {
 			height: 6px;
@@ -208,11 +190,17 @@ input[type='range'] {
 		outline-color: $color-main;
 	}
 
+	&__text {
+		display: flex;
+		justify-content: space-between;
+	}
+
 	&__strength {
 		margin-top: 22px;
 	}
 
-	&__strength-title {
+	&__strength-title,
+	&__characters {
 		font-size: 14px;
 		line-height: 19px;
 	}

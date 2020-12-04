@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	//console.log(PasswordStrength.getStrength());
 	const passwordInput = document.querySelector('.password-preview__input'),
 		passwordStrengthTitle = document.querySelector('.password-preview__strength-title'),
+		passwordCharacters = document.querySelector('.password-preview__characters'),
 		passwordStrengthIndicatorFill = document.querySelector('.strength-indicator__fill');
 
 	// Buttons
@@ -38,13 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
 		passwordInput.parentNode.classList.remove('password-preview__input-outer--active');
 	});
 	passwordInput.addEventListener('input', () => {
-		updatePasswordStrengthIndicator(PasswordStrength.getStrength(passwordInput.value));
+		updatePasswordPreview(passwordInput.value);
 	});
 
 	generatePasswordBtn.addEventListener('click', () => {
 		let password = passwordGenerator.generate();
 		passwordInput.value = password;
-		updatePasswordStrengthIndicator(PasswordStrength.getStrength(password));
+		updatePasswordPreview(password);
 		//passwordStrength.updateTitleAndIndicator(passwordInput.value);
 	});
 	restoreSettingsBtn.addEventListener('click', restoreSettings);
@@ -145,7 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		passwordLengthRange.setPasswordLength(16);
 	}
 
-	function updatePasswordStrengthIndicator(strength) {
+	function updatePasswordPreview(password) {
+		let strength = PasswordStrength.getStrength(password);
 		let indicatorFillPercent = 0;
 		switch (strength) {
 			case PasswordStrength.STRENGTH.BAD:
@@ -163,5 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 		passwordStrengthIndicatorFill.style.width = indicatorFillPercent + '%';
 		passwordStrengthTitle.textContent = 'Password strength: ' + strength;
+		passwordCharacters.textContent = 'Characters: ' + password.length;
 	}
 });

@@ -221,11 +221,20 @@ input[type='range']::-ms-track {
   outline-color: #ef4043;
 }
 
+.password-preview__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .password-preview__strength {
   margin-top: 22px;
 }
 
-.password-preview__strength-title {
+.password-preview__strength-title, .password-preview__characters {
   font-size: 14px;
   line-height: 19px;
 }
