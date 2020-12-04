@@ -23,4 +23,40 @@ export default class {
 	static symbols = (function () {
 		return [...'!"#$%&\'()*+,-.:;<=>?@^_~|{}[]`'];
 	})();
+
+	static isSetContainsLowercaseCharacter(set) {
+		for (let letter of this.lowercase) {
+			if (set.has(letter)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	static isSetContainsUppercaseCharacter(set) {
+		for (let letter of this.uppercase) {
+			if (set.has(letter)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	static isSetContainsNumberCharacter(set) {
+		for (let letter of this.numbers) {
+			if (set.has(letter)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	static isSetContainsSymbolCharacter(set) {
+		for (let letter of this.symbols) {
+			if (set.has(letter)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

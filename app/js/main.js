@@ -17,11 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	);
 
-	const passwordStrength = new PasswordStrength();
-
+	//console.log(PasswordStrength.getStrength());
 	const passwordInput = document.querySelector('.password-preview__input'),
 		passwordStrengthTitle = document.querySelector('.password-preview__strength-title'),
-		passwordStrengthIndicator = document.querySelector('.password-preview__strength-indicator');
+		passwordStrengthIndicatorFill = document.querySelector('.strength-indicator__fill');
 
 	// Buttons
 	const generatePasswordBtn = document.querySelector('.settings__generate-password-btn'),
@@ -38,10 +37,15 @@ document.addEventListener('DOMContentLoaded', () => {
 	passwordInput.addEventListener('blur', () => {
 		passwordInput.parentNode.classList.remove('password-preview__input-outer--active');
 	});
+	passwordInput.addEventListener('input', () => {
+		updatePasswordStrengthIndicator(PasswordStrength.getStrength(passwordInput.value));
+	});
 
 	generatePasswordBtn.addEventListener('click', () => {
-		passwordInput.value = passwordGenerator.generate();
-		passwordStrength.updateTitleAndIndicator(passwordInput.value);
+		let password = passwordGenerator.generate();
+		passwordInput.value = password;
+		updatePasswordStrengthIndicator(PasswordStrength.getStrength(password));
+		//passwordStrength.updateTitleAndIndicator(passwordInput.value);
 	});
 	restoreSettingsBtn.addEventListener('click', restoreSettings);
 
@@ -139,5 +143,25 @@ document.addEventListener('DOMContentLoaded', () => {
 			selectOption(btn);
 		});
 		passwordLengthRange.setPasswordLength(16);
+	}
+
+	function updatePasswordStrengthIndicator(strength) {
+		let indicatorFillPercent = 0;
+		switch (strength) {
+			case PasswordStrength.STRENGTH.BAD:
+				indicatorFillPercent = 0;
+				break;
+			case PasswordStrength.STRENGTH.OK:
+				indicatorFillPercent = 33;
+				break;
+			case PasswordStrength.STRENGTH.GOOD:
+				indicatorFillPercent = 66;
+				break;
+			case PasswordStrength.STRENGTH.EXCELLENT:
+				indicatorFillPercent = 100;
+				break;
+		}
+		passwordStrengthIndicatorFill.style.width = indicatorFillPercent + '%';
+		passwordStrengthTitle.textContent = 'Password strength: ' + strength;
 	}
 });

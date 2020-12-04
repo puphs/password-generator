@@ -155,7 +155,7 @@ input[type='range']::-ms-thumb:hover {
 }
 
 input[type='range']::-webkit-slider-runnable-track {
-  width: 99%;
+  width: 100%;
   height: 8px;
   cursor: pointer;
   border-radius: 100px;
@@ -163,14 +163,14 @@ input[type='range']::-webkit-slider-runnable-track {
 }
 
 input[type='range']::-moz-range-track {
-  width: 99%;
+  width: 100%;
   height: 8px;
   cursor: pointer;
   background: #ef4043;
 }
 
 input[type='range']::-ms-track {
-  width: 99%;
+  width: 100%;
   background-attachment: transparent;
   border-color: transparent;
   cursor: pointer;
@@ -230,16 +230,16 @@ input[type='range']::-ms-track {
 }
 
 .password-preview__visibility-btn {
-  background-image: url("/img/visibility-off.svg"), url("/img/visibility.svg");
+  background-image: url("../img/visibility-off.svg"), url("../img/visibility.svg");
   right: 12px;
 }
 
 .password-preview__visibility-btn--visible {
-  background-image: url("/img/visibility.svg");
+  background-image: url("../img/visibility.svg");
 }
 
 .password-preview__copy-btn {
-  background-image: url("/img/copy.svg");
+  background-image: url("../img/copy.svg");
   right: -44px;
 }
 
@@ -261,21 +261,27 @@ input[type='range']::-ms-track {
   line-height: 19px;
 }
 
-.password-preview__strength-indicator {
+.strength-indicator {
   margin-top: 12px;
   width: 100%;
   height: 8px;
-  background-color: white;
   position: relative;
 }
 
-.password-preview__strength-indicator::after {
-  content: '';
-  display: block;
-  background-color: #ef4043;
+.strength-indicator__fill {
   position: absolute;
   width: 50%;
-  height: 8px;
+  height: 100%;
+  background-color: #ef4043;
+  -webkit-transition: width 0.2s;
+  transition: width 0.2s;
+}
+
+.strength-indicator__background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white;
 }
 
 .password-generator {
@@ -322,6 +328,10 @@ input[type='range']::-ms-track {
 }
 
 .settings__option {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   position: relative;
   max-width: 70px;
   -ms-flex-preferred-size: 100%;

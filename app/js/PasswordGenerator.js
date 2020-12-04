@@ -23,19 +23,19 @@ export default class {
 		this.options.length = length;
 	}
 
-	// If use is true, password may contain lowercase letters
+	// If use is true, password will contain lowercase letters
 	useLowercase(use) {
 		this.options.lowercase = use ? true : false;
 	}
-	// If use is true, password may contain uppercase letters
+	// If use is true, password will contain uppercase letters
 	useUppercase(use) {
 		this.options.uppercase = use ? true : false;
 	}
-	// If use is true, password may contain symbols (e.g. ?, !, *, (, @...)
+	// If use is true, password will contain symbols (e.g. ?, !, *, (, @...)
 	useSymbols(use) {
 		this.options.symbols = use ? true : false;
 	}
-	// If use is true, password may contain numbers
+	// If use is true, password will contain numbers
 	useNumbers(use) {
 		this.options.numbers = use ? true : false;
 	}
@@ -51,7 +51,26 @@ export default class {
 		for (let i = 0; i < randomValues.length; i++) {
 			password += characters[randomValues[i] % characters.length];
 		}
-		return password;
+
+		if (!this.isPasswordMatchesOptions(password)) {
+			return this.generate();
+		} else {
+			return password;
+		}
+	}
+
+	isPasswordMatchesOptions(password) {
+		let charactersSet = new Set([...password]);
+
+		if (this.options.lowercase)
+			if (!Characters.isSetContainsLowercaseCharacter(charactersSet)) return false;
+		if (this.options.uppercase)
+			if (!Characters.isSetContainsUppercaseCharacter(charactersSet)) return false;
+		if (this.options.numbers)
+			if (!Characters.isSetContainsNumberCharacter(charactersSet)) return false;
+		if (this.options.symbols)
+			if (!Characters.isSetContainsSymbolCharacter(charactersSet)) return false;
+		return true;
 	}
 
 	/* 
