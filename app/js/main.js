@@ -1,7 +1,9 @@
+import Characters from './Characters.js';
 import Swiper from './libs/swiper-bundle.esm.browser.min.js';
 import PasswordGenerator from './PasswordGenerator.js';
 import PasswordLengthRange from './PasswordLengthRange.js';
 import PasswordStrength from './PasswordStrength.js';
+import PasswordInput from './PasswordInput.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	setupPaswordAdvicesSlider();
@@ -17,9 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	);
 
+	const passwordInput = new PasswordInput('.password-preview__input', (inputValue) => {
+		updatePasswordPreview(inputValue);
+	});
+
 	//console.log(PasswordStrength.getStrength());
-	const passwordInput = document.querySelector('.password-preview__input'),
-		passwordStrengthTitle = document.querySelector('.password-preview__strength-title'),
+	const passwordStrengthTitle = document.querySelector('.password-preview__strength-title'),
 		passwordCharacters = document.querySelector('.password-preview__characters'),
 		passwordStrengthIndicatorFill = document.querySelector('.strength-indicator__fill');
 
@@ -32,44 +37,29 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Setting up buttons
 	const optionBtns = document.querySelectorAll('.settings__option');
 
-	passwordInput.addEventListener('focus', () => {
-		passwordInput.parentNode.classList.add('password-preview__input-outer--active');
+	document.addEventListener('keydown', (e) => {
+		if (e.key == 'Enter' || e.key == ' ') {
+			generatePassword();
+		}
 	});
-	passwordInput.addEventListener('blur', () => {
-		passwordInput.parentNode.classList.remove('password-preview__input-outer--active');
-	});
-	passwordInput.addEventListener('input', () => {
-		updatePasswordPreview(passwordInput.value);
+	generatePasswordBtn.addEventListener('click', () => {
+		generatePassword();
 	});
 
-	generatePasswordBtn.addEventListener('click', () => {
-		let password = passwordGenerator.generate();
-		passwordInput.value = password;
-		updatePasswordPreview(password);
-		//passwordStrength.updateTitleAndIndicator(passwordInput.value);
-	});
 	restoreSettingsBtn.addEventListener('click', restoreSettings);
 
 	// Password copy functionnality
 	passwordCopyBtn.addEventListener('click', () => {
-		// selecting password
-		passwordInput.select();
-		passwordInput.setSelectionRange(0, 99999);
-
-		document.execCommand('copy');
-
-		// removing selection
-		passwordInput.selectionEnd = 0;
-		passwordInput.blur();
+		passwordInput.copyToClipboard();
 	});
 
 	// Password visibility functionality
 	passwordVisibilityBtn.addEventListener('click', () => {
-		if (passwordInput.getAttribute('type') == 'text') {
+		if (passwordInput.isVisible()) {
+			passwordInput.setVisibility(false);
 			passwordVisibilityBtn.classList.add('password-preview__visibility-btn--visible');
-			passwordInput.setAttribute('type', 'password');
 		} else {
-			passwordInput.setAttribute('type', 'text');
+			passwordInput.setVisibility(true);
 			passwordVisibilityBtn.classList.remove('password-preview__visibility-btn--visible');
 		}
 	});
@@ -93,6 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	restoreSettings();
+
+	function generatePassword() {
+		let password = passwordGenerator.generate();
+		passwordInput.setValue(password);
+		updatePasswordPreview(password);
+	}
 
 	function isOptionSelected(optionStr) {
 		return passwordGenerator.options[optionStr];
