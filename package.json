@@ -1,23 +1,25 @@
 {
-  "name": "password-generator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "dependencies": {
-    "jest": "^26.6.3"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/puphs/password-generator.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/puphs/password-generator/issues"
-  },
-  "homepage": "https://github.com/puphs/password-generator#readme"
+	"name": "password-generator",
+	"version": "1.0.0",
+	"description": "",
+	"main": "main.js",
+	"dependencies": {},
+	"devDependencies": {
+		"browser-sync": "^2.26.13",
+		"chai": "^4.2.0",
+		"mocha": "^8.2.1"
+	},
+	"scripts": {
+		"test": "mocha"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/puphs/password-generator.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/puphs/password-generator/issues"
+	},
+	"homepage": "https://github.com/puphs/password-generator#readme"
 }
