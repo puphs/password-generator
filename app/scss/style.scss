@@ -11,6 +11,7 @@ html * {
 }
 
 body {
+	position: relative;
 	height: 100vh;
 	margin: 0;
 	padding: 0;
@@ -131,8 +132,14 @@ input[type='range'] {
 	padding-top: 56px;
 	&__title {
 		margin: 0;
-		font-size: 36px;
-		line-height: 49px;
+		font-size: 0;
+		& > span {
+			font-size: 36px;
+			line-height: 49px;
+			&:nth-child(n + 2) {
+				padding-left: 2px;
+			}
+		}
 	}
 
 	&__input-outer {

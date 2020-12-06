@@ -4,6 +4,8 @@ import PasswordGenerator from './PasswordGenerator.js';
 import PasswordLengthRange from './PasswordLengthRange.js';
 import PasswordStrength from './PasswordStrength.js';
 import PasswordInput from './PasswordInput.js';
+import TextAnimator from './TextAnimator.js';
+import Toast from './Toast.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 	setupPaswordAdvicesSlider();
@@ -23,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		updatePasswordPreview(inputValue);
 	});
 
-	//console.log(PasswordStrength.getStrength());
+	let passwordCoppiedToast = new Toast('Password coppied to clipboard', Toast.DURATION_SHORT);
+
 	const passwordStrengthTitle = document.querySelector('.password-preview__strength-title'),
 		passwordCharacters = document.querySelector('.password-preview__characters'),
 		passwordStrengthIndicatorFill = document.querySelector('.strength-indicator__fill');
@@ -51,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// Password copy functionnality
 	passwordCopyBtn.addEventListener('click', () => {
 		passwordInput.copyToClipboard();
+		passwordCoppiedToast.show();
 	});
 
 	// Password visibility functionality
