@@ -4,7 +4,6 @@ import PasswordGenerator from './PasswordGenerator.js';
 import PasswordLengthRange from './PasswordLengthRange.js';
 import PasswordStrength from './PasswordStrength.js';
 import PasswordInput from './PasswordInput.js';
-import TextAnimator from './TextAnimator.js';
 import Toast from './Toast.js';
 
 document.addEventListener('DOMContentLoaded', () => {

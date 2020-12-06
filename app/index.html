@@ -20,26 +20,8 @@
 
 <body>
   <div class="container">
-    <section class="password-preview">
-      <h1 class="password-preview__title">
-        <span>p</span>
-        <span>a</span>
-        <span>s</span>
-        <span>s</span>
-        <span>w</span>
-        <span>o</span>
-        <span>r</span>
-        <span>d</span>
-        <span>&nbsp;</span>
-        <span>g</span>
-        <span>e</span>
-        <span>n</span>
-        <span>e</span>
-        <span>r</span>
-        <span>a</span>
-        <span>t</span>
-        <span>o</span>
-        <span>r</span></h1>
+    <section class="password-preview password-section">
+      <h1 class="password-preview__title">password generator</h1>
       <div class="password-preview__input-outer">
         <input class="password-preview__input" maxlength="48" autocomplete="off" type="text" value="$*lSa82:lkx8wOI">
         <button class="password-preview__visibility-btn password-preview__btn"></button>
@@ -56,53 +38,62 @@
         </div>
       </div>
     </section>
-    <section class="password-generator">
+    <section class="password-generator password-section">
       <div class="password-generator__title">Setup password generator:</div>
-      <div class="settings">
-        <div class="settings__row">
-          <div class="settings__options settings__column">
+      <div class="settings password-generator__settings">
+        <div class="settings__column">
+          <div class="settings__options settings__row">
             <div class="settings__option settings__option--selected" selected='' data-option="lowercase">ab</div>
             <div class="settings__option settings__option--hoverable" data-option="uppercase">AB</div>
             <div class="settings__option settings__option--hoverable" data-option="numbers">123</div>
             <div class="settings__option settings__option--hoverable" data-option="symbols">#&?</div>
           </div>
-          <div class="settings__column">
-            <button class="settings__restore-settings-btn settings__btn btn-base">restore settings</button>
-          </div>
-        </div>
-        <div class="settings__row">
-          <div class="password-length settings__column">
+          <div class="password-length settings__row">
             <div class="password-length__title">Password length: 32</div>
             <input class="password-length__range" type="range" min="1" max="1000">
           </div>
-          <div class="settings__column">
+        </div>
+        <div class="settings__column">
+          <div class="settings__row">
+            <button class="settings__restore-settings-btn settings__btn btn-base">restore settings</button>
+          </div>
+
+          <div class="settings__row">
             <button class="settings__generate-password-btn settings__btn btn-base">generate password</button>
           </div>
         </div>
       </div>
 
     </section>
-    <section class="password-advices">
+    <section class="password-advices password-section">
       <h3 class="password-advices__title">Password security advices</h3>
       <div class="password-advices__slider">
         <button class="password-advices__btn password-advices__prev-btn"></button>
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="password-advices__slider-text swiper-slide">
+            <p class="password-advices__slider-text swiper-slide">
               Don’t use the same password for different sites.
               Otherwise, someone who culls your
               Facebook or Twitter password in a phishing exploit could, for example, access your bank account.
-            </div>
-            <div class="password-advices__slider-text swiper-slide">
-              DON’T use the same password for different sites.
-              Otherwise, someone who culls your
-              Facebook or Twitter password in a phishing exploit could, for example, access your bank account.
-            </div>
-            <div class="password-advices__slider-text swiper-slide">
-              DON’T use the same password for different sites.
-              Otherwise, someone who culls your
-              Facebook or Twitter password in a phishing exploit could, for example, access your bank account.
-            </div>
+            </p>
+            <p class="password-advices__slider-text swiper-slide">
+              If you don’t want to memorize multiple passwords, consider using a password manager. Password
+              managers will automatically update stored passwords, keep them encrypted, and require multi-factor
+              authentication for access.
+            </p>
+            <p class="password-advices__slider-text swiper-slide">
+              Avoid using simple words, phrases, and patterns that are easy to guess. Don't use obvious words and
+              phrases like "password", sequences like 1234 or "abcd", "qwerty".
+            </p>
+            <p class="password-advices__slider-text swiper-slide">
+              The more sensitive your information is, the more often you should change your password. Once it is
+              changed, do not use that password again for a very long time.
+            </p>
+            <p class="password-advices__slider-text swiper-slide">
+              It isn’t hard to discover on the Internet things like
+              your date of birth, the street where you grew up, or the name of your first dog, so do not use these
+              things as your password.
+            </p>
           </div>
         </div>
         <button class="password-advices__btn password-advices__next-btn"></button>
