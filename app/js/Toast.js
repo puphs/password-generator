@@ -37,12 +37,13 @@ export default class {
             position: fixed;
             background-color: white;
             padding: 8px 16px;
-            bottom: 16px;
+            bottom: 32px;
             margin: 0 auto;
             border-radius: 3px;
             opacity: 0;
             transform: none;
-        	animation-fill-mode: forwards;
+			animation-fill-mode: forwards;
+			z-index: 100;
         }
 
         .toast__message {
