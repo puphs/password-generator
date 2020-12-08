@@ -29,7 +29,6 @@ export default class {
 		if (document.querySelector('.' + styleClass)) return;
 
 		let styleElement = document.createElement('style');
-		//console.log(styleElement);
 		styleElement.classList.add(styleClass);
 		styleElement.append(
 			document.createTextNode(`
@@ -91,7 +90,6 @@ export default class {
 	}
 
 	centerHorizontally() {
-		console.log('centering hor');
 		this.toastElement.style.left =
 			document.body.offsetWidth / 2 - this.toastElement.offsetWidth / 2 + 'px';
 	}
