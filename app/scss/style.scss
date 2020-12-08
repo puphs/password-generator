@@ -398,6 +398,7 @@ input[type='range'] {
 
 // --- password-advices ---
 .password-advices {
+	padding-bottom: 20px;
 	&__title {
 		margin: 0;
 		@extend %open-sans-s;
@@ -443,6 +444,7 @@ input[type='range'] {
 }
 @media (max-width: 500px) {
 	.password-advices {
+		padding-bottom: 10px;
 		&__slider-text {
 			font-size: 12px;
 			line-height: 14.5px;

@@ -460,6 +460,10 @@ input[type='range']::-ms-track {
   height: 8px;
 }
 
+.password-advices {
+  padding-bottom: 20px;
+}
+
 .password-advices__title {
   margin: 0;
   font-size: 16px;
@@ -519,6 +523,9 @@ input[type='range']::-ms-track {
 }
 
 @media (max-width: 500px) {
+  .password-advices {
+    padding-bottom: 10px;
+  }
   .password-advices__slider-text {
     font-size: 12px;
     line-height: 14.5px;
