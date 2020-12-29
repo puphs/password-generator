@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			generatePassword();
 		}
 	});
+
 	generatePasswordBtn.addEventListener('click', () => {
 		generatePassword();
 	});
@@ -86,6 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	});
 
 	restoreSettings();
+	generatePassword();
 
 	function generatePassword() {
 		let password = passwordGenerator.generate();
