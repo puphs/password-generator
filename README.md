@@ -5,5 +5,5 @@
 **Password generator** is a website that will help you to create passwords.<br/>
 You can choose password length, enable/disable characters used in password. Also password generator has password strength indicator and security advices, they will help you to create more strong password.
 
-You can try it ![here (Github Pages)](https://puphs.github.io/password-generator/app)
+You can try it ![here (Github Pages)](https://puphs.github.io/password-generator/app/)
 
