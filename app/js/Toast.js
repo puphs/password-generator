@@ -8,7 +8,7 @@ export default class {
 		this.toastElement.append(this.toastMessageElement);
 
 		this.animationShowName = 'toast-show';
-		this.animaitonHideName = 'toast-hide';
+		this.animationHideName = 'toast-hide';
 
 		// adding styles
 		this.addStyle();
@@ -64,7 +64,7 @@ export default class {
             }
         }
         
-        @keyframes ${this.animaitonHideName} {
+        @keyframes ${this.animationHideName} {
             0% {
                 opacity: 1;
             }
@@ -108,7 +108,7 @@ export default class {
 
 	hide() {
 		requestAnimationFrame(() => {
-			this.toastElement.style.animationName = `${this.animaitonHideName}`;
+			this.toastElement.style.animationName = `${this.animationHideName}`;
 			this.toastElement.style.animationDuration = '1.4s';
 		});
 	}
